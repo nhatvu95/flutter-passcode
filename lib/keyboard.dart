@@ -78,48 +78,45 @@ class Keyboard extends StatelessWidget {
       width: keyboardSize.width,
       height: keyboardSize.height,
       margin: EdgeInsets.only(top: 16),
-      child: Stack(
-        children: <Widget>[
-          AlignedGrid(
-            keyboardSize: keyboardSize,
-            children: List.generate(12, (index) {
-              return index == 10 || index == 12
-                  ? Container(
-                      margin: EdgeInsets.all(4),
-                      child: ClipOval(
-                        child: Material(
-                          color: keyboardUIConfig.digitFillColor,
-                          child: InkWell(
-                            splashColor: Color(0xff4686d7),
-                            onTap: () {},
-                            child: Container(
-                              child: Center(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: <Widget>[
-                                    Icon(Icons.clear),
-                                    Text(
-                                      index == 11 ? 'CLEAR' : 'BACK',
-                                    ),
-                                  ],
+      child: AlignedGrid(
+        keyboardSize: keyboardSize,
+        children: List.generate(12, (index) {
+          return index == 10 || index == 12
+              ? Container(
+                  margin: EdgeInsets.all(4),
+                  child: ClipOval(
+                    child: Material(
+                      color: keyboardUIConfig.digitFillColor,
+                      child: InkWell(
+                        splashColor: Color(0xff4686d7),
+                        onTap: () {},
+                        child: Container(
+                          child: Center(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                Icon(Icons.clear),
+                                Text(
+                                  index == 10 ? 'CLEAR' : 'BACK',
+                                  style: TextStyle(color: Colors.white),
                                 ),
-                              ),
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                border: Border.all(
-                                    color: keyboardUIConfig.primaryColor,
-                                    width: keyboardUIConfig.digitBorderWidth),
-                              ),
+                              ],
                             ),
+                          ),
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            border: Border.all(
+                                color: keyboardUIConfig.primaryColor,
+                                width: keyboardUIConfig.digitBorderWidth),
                           ),
                         ),
                       ),
-                    )
-                  : _buildKeyboardDigit(keyboardItems[index]);
-            }),
-          ),
-          Text('dwddwd')
-        ],
+                    ),
+                  ),
+                )
+              : _buildKeyboardDigit(keyboardItems[index]);
+        }),
       ),
     );
   }
