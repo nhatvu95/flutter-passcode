@@ -94,6 +94,8 @@ class Keyboard extends StatelessWidget {
                         onTap: () {
                           if (index == 9) {
                             actionDelete();
+                          } else {
+                            Navigator.of(context).dispose();
                           }
                         },
                         child: Container(
