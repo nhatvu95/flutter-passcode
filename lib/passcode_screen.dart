@@ -96,52 +96,54 @@ class _PasscodeScreenState extends State<PasscodeScreen>
       body: SafeArea(
         child: OrientationBuilder(
           builder: (context, orientation) {
-            return orientation == Orientation.portrait
-                ? _buildPortraitPasscodeScreen()
-                : _buildLandscapePasscodeScreen();
+            return _buildPortraitPasscodeScreen();
           },
         ),
       ),
     );
   }
 
-  _buildPortraitPasscodeScreen() => Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          Center(
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                Icon(
-                  Icons.vpn_lock,
-                  color: Colors.yellow,
-                  size: 40.0,
-                ),
-                SizedBox(
-                  width: 10.0,
-                ),
-                Text('Chef Tech',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 35.0,
-                        fontWeight: FontWeight.bold))
-              ],
+  _buildPortraitPasscodeScreen() => Container(
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Center(
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Icon(
+                    Icons.vpn_lock,
+                    color: Colors.yellow,
+                    size: 40.0,
+                  ),
+                  SizedBox(
+                    width: 10.0,
+                  ),
+                  Text('Chef Tech',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 35.0,
+                          fontWeight: FontWeight.bold))
+                ],
+              ),
             ),
-          ),
-          SizedBox(height: 15.0),
-          widget.title,
-          Container(
-            margin: const EdgeInsets.only(top: 20),
-            height: 40,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: _buildCircles(),
+            SizedBox(height: 15.0),
+            widget.title,
+            Container(
+              margin: const EdgeInsets.only(top: 20),
+              height: 40,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: _buildCircles(),
+              ),
             ),
-          ),
-          _buildKeyboard(),
-          widget.bottomWidget != null ? widget.bottomWidget : Container()
-        ],
+            _buildKeyboard(),
+            widget.bottomWidget != null ? widget.bottomWidget : Container()
+          ],
+        ),
       );
 
   _buildLandscapePasscodeScreen() => Center(
@@ -205,7 +207,7 @@ class _PasscodeScreenState extends State<PasscodeScreen>
     for (int i = 0; i < widget.passwordDigits; i++) {
       list.add(
         Container(
-          margin: EdgeInsets.all(5),
+          margin: EdgeInsets.all(10),
           child: Circle(
             filled: i < enteredPasscode.length,
             circleUIConfig: config,
