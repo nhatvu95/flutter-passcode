@@ -124,12 +124,11 @@ class _PasscodeScreenState extends State<PasscodeScreen>
                       SizedBox(
                         width: 10.0,
                       ),
-                      Flexible(
-                          child: Text('Chef Tech',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 30.0,
-                                  fontWeight: FontWeight.bold)))
+                      Text('Chef Tech',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 35.0,
+                              fontWeight: FontWeight.bold))
                     ],
                   ),
                   SizedBox(height: 15.0),

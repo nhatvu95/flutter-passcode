@@ -11,7 +11,7 @@ class CircleUIConfig {
       {this.borderColor = Colors.white,
       this.borderWidth = 1,
       this.fillColor = Colors.white,
-      this.circleSize = 15});
+      this.circleSize = 10});
 }
 
 class Circle extends StatelessWidget {
@@ -30,8 +30,8 @@ class Circle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(bottom: extraSize),
-      width: circleUIConfig.circleSize,
-      height: circleUIConfig.circleSize,
+      width: 10,
+      height: 10,
       decoration: BoxDecoration(
           color: filled ? Color(0xff4686d7) : Colors.transparent,
           shape: BoxShape.circle,
