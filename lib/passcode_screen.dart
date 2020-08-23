@@ -198,6 +198,9 @@ class _PasscodeScreenState extends State<PasscodeScreen>
           actionDelete: () {
             _onDeleteCancelButtonPressed();
           },
+          actionBack: () {
+            _onBack();
+          },
         ),
       );
 
@@ -226,10 +229,14 @@ class _PasscodeScreenState extends State<PasscodeScreen>
         enteredPasscode =
             enteredPasscode.substring(0, enteredPasscode.length - 1);
       });
-    } else {
-      if (widget.cancelCallback != null) {
-        widget.cancelCallback();
-      }
+    }else{
+      controller.forward();
+    }
+  }
+
+  _onBack() {
+    if (widget.cancelCallback != null) {
+      widget.cancelCallback();
     }
   }
 

@@ -32,7 +32,7 @@ class KeyboardUIConfig {
 class Keyboard extends StatelessWidget {
   final KeyboardUIConfig keyboardUIConfig;
   final KeyboardTapCallback onKeyboardTap;
-  final Function actionDelete;
+  final Function actionDelete, actionBack;
 
   //should have a proper order [1...9, 0]
   final List<String> digits;
@@ -42,6 +42,7 @@ class Keyboard extends StatelessWidget {
     @required this.keyboardUIConfig,
     @required this.onKeyboardTap,
     this.actionDelete,
+    this.actionBack,
     this.digits,
   }) : super(key: key);
 
@@ -95,7 +96,7 @@ class Keyboard extends StatelessWidget {
                           if (index == 9) {
                             actionDelete();
                           } else {
-                            Navigator.of(context).dispose();
+                            actionBack();
                           }
                         },
                         child: Container(
