@@ -113,26 +113,24 @@ class _PasscodeScreenState extends State<PasscodeScreen>
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
-                  Center(
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: <Widget>[
-                        Icon(
-                          Icons.vpn_lock,
-                          color: Colors.yellow,
-                          size: 40.0,
-                        ),
-                        SizedBox(
-                          width: 10.0,
-                        ),
-                        Flexible(
-                            child: Text('Chef Tech',
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 25.0,
-                                    fontWeight: FontWeight.bold)))
-                      ],
-                    ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      Icon(
+                        Icons.vpn_lock,
+                        color: Colors.yellow,
+                        size: 40.0,
+                      ),
+                      SizedBox(
+                        width: 10.0,
+                      ),
+                      Flexible(
+                          child: Text('Chef Tech',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 30.0,
+                                  fontWeight: FontWeight.bold)))
+                    ],
                   ),
                   SizedBox(height: 15.0),
                   widget.title,
@@ -231,7 +229,7 @@ class _PasscodeScreenState extends State<PasscodeScreen>
     for (int i = 0; i < widget.passwordDigits; i++) {
       list.add(
         Container(
-          margin: EdgeInsets.all(8),
+          margin: EdgeInsets.all(5),
           child: Circle(
             filled: i < enteredPasscode.length,
             circleUIConfig: config,
