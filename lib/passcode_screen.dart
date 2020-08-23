@@ -230,8 +230,6 @@ class _PasscodeScreenState extends State<PasscodeScreen>
     for (int i = 0; i < widget.passwordDigits; i++) {
       list.add(
         Container(
-          width: 30.0,
-          height: 30.0,
           margin: EdgeInsets.all(5),
           child: Circle(
             filled: i < enteredPasscode.length,

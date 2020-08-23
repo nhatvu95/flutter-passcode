@@ -61,11 +61,17 @@ class Keyboard extends StatelessWidget {
       width: keyboardSize.width,
       height: keyboardSize.height,
       margin: EdgeInsets.only(top: 16),
-      child: AlignedGrid(
-        keyboardSize: keyboardSize,
-        children: List.generate(10, (index) {
-          return _buildKeyboardDigit(keyboardItems[index]);
-        }),
+      child: Stack(
+        children: <Widget>[
+          AlignedGrid(
+            keyboardSize: keyboardSize,
+            children: List.generate(10, (index) {
+              return _buildKeyboardDigit(keyboardItems[index]);
+            }),
+          ),
+          Text('dwddwd')
+        ],
+
       ),
     );
   }
@@ -77,7 +83,7 @@ class Keyboard extends StatelessWidget {
         child: Material(
           color: keyboardUIConfig.digitFillColor,
           child: InkWell(
-            splashColor: keyboardUIConfig.primaryColor.withOpacity(0.4),
+            splashColor: Color(0xff4686d7),
             onTap: () {
               onKeyboardTap(text);
             },
