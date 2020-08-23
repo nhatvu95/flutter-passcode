@@ -4,6 +4,7 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:passcode_screen/circle.dart';
 import 'package:passcode_screen/keyboard.dart';
 import 'package:passcode_screen/shake_curve.dart';
@@ -104,31 +105,31 @@ class _PasscodeScreenState extends State<PasscodeScreen>
   }
 
   _buildPortraitPasscodeScreen() => Container(
+        alignment: Alignment.center,
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            Center(
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  Icon(
-                    Icons.vpn_lock,
-                    color: Colors.yellow,
-                    size: 40.0,
-                  ),
-                  SizedBox(
-                    width: 10.0,
-                  ),
-                  Text('Chef Tech',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 35.0,
-                          fontWeight: FontWeight.bold))
-                ],
-              ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Icon(
+                  Icons.vpn_lock,
+                  color: Colors.yellow,
+                  size: 40.0,
+                ),
+                SizedBox(
+                  width: 10.0,
+                ),
+                Text('Chef Tech',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 35.0,
+                        fontWeight: FontWeight.bold))
+              ],
             ),
             SizedBox(height: 15.0),
             widget.title,
