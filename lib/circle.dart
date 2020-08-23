@@ -30,8 +30,8 @@ class Circle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(bottom: extraSize),
-      width: 10,
-      height: 10,
+      width: 15,
+      height: 15,
       decoration: BoxDecoration(
           color: filled ? Color(0xff4686d7) : Colors.transparent,
           shape: BoxShape.circle,

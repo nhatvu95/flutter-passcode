@@ -113,23 +113,25 @@ class _PasscodeScreenState extends State<PasscodeScreen>
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
-                      Icon(
-                        Icons.vpn_lock,
-                        color: Colors.yellow,
-                        size: 40.0,
-                      ),
-                      SizedBox(
-                        width: 10.0,
-                      ),
-                      Text('Chef Tech',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 35.0,
-                              fontWeight: FontWeight.bold))
-                    ],
+                  Center(
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        Icon(
+                          Icons.vpn_lock,
+                          color: Colors.yellow,
+                          size: 40.0,
+                        ),
+                        SizedBox(
+                          width: 10.0,
+                        ),
+                        Text('Chef Tech',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 35.0,
+                                fontWeight: FontWeight.bold))
+                      ],
+                    ),
                   ),
                   SizedBox(height: 15.0),
                   widget.title,
