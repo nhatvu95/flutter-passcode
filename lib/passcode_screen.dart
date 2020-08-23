@@ -105,114 +105,84 @@ class _PasscodeScreenState extends State<PasscodeScreen>
     );
   }
 
-  _buildPortraitPasscodeScreen() => Stack(
-        children: [
-          Positioned(
-            child: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
+  _buildPortraitPasscodeScreen() => Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Icon(
+                Icons.vpn_lock,
+                color: Colors.yellow,
+                size: 40.0,
+              ),
+              SizedBox(
+                width: 10.0,
+              ),
+              Text('Chef Tech',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 35.0,
+                      fontWeight: FontWeight.bold))
+            ],
+          ),
+          SizedBox(height: 15.0),
+          widget.title,
+          Container(
+            margin: const EdgeInsets.only(top: 20),
+            height: 40,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: _buildCircles(),
+            ),
+          ),
+          _buildKeyboard(),
+          widget.bottomWidget != null ? widget.bottomWidget : Container()
+        ],
+      );
+
+  _buildLandscapePasscodeScreen() => Center(
+        child: Row(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Container(
+              child: Stack(
                 children: <Widget>[
-                  Center(
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: <Widget>[
-                        Icon(
-                          Icons.vpn_lock,
-                          color: Colors.yellow,
-                          size: 40.0,
-                        ),
-                        SizedBox(
-                          width: 10.0,
-                        ),
-                        Text('Chef Tech',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 35.0,
-                                fontWeight: FontWeight.bold))
-                      ],
+                  Positioned(
+                    child: Align(
+                      alignment: Alignment.center,
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          widget.title,
+                          Container(
+                            margin: const EdgeInsets.only(top: 20),
+                            height: 40,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: _buildCircles(),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                  SizedBox(height: 15.0),
-                  widget.title,
-                  Container(
-                    margin: const EdgeInsets.only(top: 20),
-                    height: 40,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: _buildCircles(),
-                    ),
-                  ),
-                  _buildKeyboard(),
                   widget.bottomWidget != null
-                      ? widget.bottomWidget
+                      ? Positioned(
+                          child: Align(
+                              alignment: Alignment.topCenter,
+                              child: widget.bottomWidget),
+                        )
                       : Container()
                 ],
               ),
             ),
-          ),
-          Positioned(
-            child: Align(
-              alignment: Alignment.bottomRight,
-              child: _buildDeleteButton(),
-            ),
-          ),
-        ],
-      );
-
-  _buildLandscapePasscodeScreen() => Stack(
-        children: [
-          Positioned(
-            child: Center(
-              child: Row(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Container(
-                    child: Stack(
-                      children: <Widget>[
-                        Positioned(
-                          child: Align(
-                            alignment: Alignment.center,
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                widget.title,
-                                Container(
-                                  margin: const EdgeInsets.only(top: 20),
-                                  height: 40,
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: _buildCircles(),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        widget.bottomWidget != null
-                            ? Positioned(
-                                child: Align(
-                                    alignment: Alignment.topCenter,
-                                    child: widget.bottomWidget),
-                              )
-                            : Container()
-                      ],
-                    ),
-                  ),
-                  _buildKeyboard(),
-                ],
-              ),
-            ),
-          ),
-          Positioned(
-            child: Align(
-              alignment: Alignment.bottomRight,
-              child: _buildDeleteButton(),
-            ),
-          )
-        ],
+            _buildKeyboard(),
+          ],
+        ),
       );
 
   _buildKeyboard() => Container(
@@ -220,6 +190,7 @@ class _PasscodeScreenState extends State<PasscodeScreen>
           onKeyboardTap: _onKeyboardButtonPressed,
           keyboardUIConfig: widget.keyboardUIConfig,
           digits: widget.digits,
+          actionDelete: _onDeleteCancelButtonPressed(),
         ),
       );
 
@@ -301,17 +272,17 @@ class _PasscodeScreenState extends State<PasscodeScreen>
     }
   }
 
-  Widget _buildDeleteButton() {
-    return Container(
-      child: CupertinoButton(
-        onPressed: _onDeleteCancelButtonPressed,
-        child: Container(
-          margin: widget.keyboardUIConfig.digitInnerMargin,
-          child: enteredPasscode.length == 0
-              ? widget.cancelButton
-              : widget.deleteButton,
-        ),
-      ),
-    );
-  }
+//  Widget _buildDeleteButton() {
+//    return Container(
+//      child: CupertinoButton(
+//        onPressed: _onDeleteCancelButtonPressed,
+//        child: Container(
+//          margin: widget.keyboardUIConfig.digitInnerMargin,
+//          child: enteredPasscode.length == 0
+//              ? widget.cancelButton
+//              : widget.deleteButton,
+//        ),
+//      ),
+//    );
+//  }
 }

@@ -32,6 +32,7 @@ class KeyboardUIConfig {
 class Keyboard extends StatelessWidget {
   final KeyboardUIConfig keyboardUIConfig;
   final KeyboardTapCallback onKeyboardTap;
+  final Function actionDelete;
 
   //should have a proper order [1...9, 0]
   final List<String> digits;
@@ -40,6 +41,7 @@ class Keyboard extends StatelessWidget {
     Key key,
     @required this.keyboardUIConfig,
     @required this.onKeyboardTap,
+    this.actionDelete,
     this.digits,
   }) : super(key: key);
 
@@ -89,16 +91,20 @@ class Keyboard extends StatelessWidget {
                       color: keyboardUIConfig.digitFillColor,
                       child: InkWell(
                         splashColor: Color(0xff4686d7),
-                        onTap: () {},
+                        onTap: () {
+                          if (index == 9) {
+                            actionDelete();
+                          }
+                        },
                         child: Container(
                           child: Center(
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
-                                Icon(Icons.clear),
+                                Icon(Icons.clear, color: Colors.white),
                                 Text(
-                                  index == 10 ? 'CLEAR' : 'BACK',
+                                  index == 9 ? 'CLEAR' : 'BACK',
                                   style: TextStyle(color: Colors.white),
                                 ),
                               ],
