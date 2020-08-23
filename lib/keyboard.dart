@@ -81,7 +81,7 @@ class Keyboard extends StatelessWidget {
       child: AlignedGrid(
         keyboardSize: keyboardSize,
         children: List.generate(12, (index) {
-          return index == 10 || index == 12
+          return index == 9 || index == 11
               ? Container(
                   margin: EdgeInsets.all(4),
                   child: ClipOval(
