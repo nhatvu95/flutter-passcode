@@ -133,9 +133,9 @@ class _PasscodeScreenState extends State<PasscodeScreen>
               ],
             ),
             SizedBox(height: 15.0),
-            widget.showTheTextError ?? Container(),
-            SizedBox(height: widget.showTheTextError != null ? 15.0 : 0.0),
             widget.title,
+            SizedBox(height: widget.showTheTextError != null ? 10.0 : 0.0),
+            widget.showTheTextError ?? Container(),
             Container(
               margin: const EdgeInsets.only(top: 20),
               height: 40,
