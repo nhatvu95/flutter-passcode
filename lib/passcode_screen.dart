@@ -14,7 +14,7 @@ typedef IsValidCallback = void Function();
 typedef CancelCallback = void Function();
 
 class PasscodeScreen extends StatefulWidget {
-  final Widget title;
+  final Widget title, showTheTextError;
   final int passwordDigits;
   final Color backgroundColor;
   final PasswordEnteredCallback passwordEnteredCallback;
@@ -46,6 +46,7 @@ class PasscodeScreen extends StatefulWidget {
     this.bottomWidget,
     this.backgroundColor,
     this.cancelCallback,
+    this.showTheTextError,
     this.digits,
   })  : circleUIConfig =
             circleUIConfig == null ? const CircleUIConfig() : circleUIConfig,
@@ -132,6 +133,8 @@ class _PasscodeScreenState extends State<PasscodeScreen>
               ],
             ),
             SizedBox(height: 15.0),
+            widget.showTheTextError ?? Container(),
+            SizedBox(height: widget.showTheTextError != null ? 15.0 : 0.0),
             widget.title,
             Container(
               margin: const EdgeInsets.only(top: 20),
@@ -229,7 +232,7 @@ class _PasscodeScreenState extends State<PasscodeScreen>
         enteredPasscode =
             enteredPasscode.substring(0, enteredPasscode.length - 1);
       });
-    }else{
+    } else {
       controller.forward();
     }
   }
