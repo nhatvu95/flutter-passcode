@@ -31,6 +31,7 @@ class PasscodeScreen extends StatefulWidget {
   final CircleUIConfig circleUIConfig;
   final KeyboardUIConfig keyboardUIConfig;
   final List<String> digits;
+  final bool isDisableKeyboard;
 
   PasscodeScreen({
     Key key,
@@ -48,6 +49,7 @@ class PasscodeScreen extends StatefulWidget {
     this.cancelCallback,
     this.showTheTextError,
     this.digits,
+    this.isDisableKeyboard = false,
   })  : circleUIConfig =
             circleUIConfig == null ? const CircleUIConfig() : circleUIConfig,
         keyboardUIConfig = keyboardUIConfig == null
@@ -95,12 +97,20 @@ class _PasscodeScreenState extends State<PasscodeScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: widget.backgroundColor ?? Colors.black.withOpacity(0.8),
-      body: SafeArea(
-        child: OrientationBuilder(
-          builder: (context, orientation) {
-            return _buildPortraitPasscodeScreen();
-          },
-        ),
+      body: Stack(
+        children: [
+          SafeArea(
+            child: OrientationBuilder(
+              builder: (context, orientation) {
+                return _buildPortraitPasscodeScreen();
+              },
+            ),
+          ),
+          Container(
+              width: widget.isDisableKeyboard ? double.infinity : 0.0,
+              height: widget.isDisableKeyboard ? double.infinity : 0.0,
+              color: Colors.transparent)
+        ],
       ),
     );
   }
