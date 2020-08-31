@@ -32,6 +32,7 @@ class PasscodeScreen extends StatefulWidget {
   final KeyboardUIConfig keyboardUIConfig;
   final List<String> digits;
   final bool isDisableKeyboard;
+  final bool isHideWidgetError;
 
   PasscodeScreen({
     Key key,
@@ -50,6 +51,7 @@ class PasscodeScreen extends StatefulWidget {
     this.showTheTextError,
     this.digits,
     this.isDisableKeyboard = false,
+    this.isHideWidgetError =false ,
   })  : circleUIConfig =
             circleUIConfig == null ? const CircleUIConfig() : circleUIConfig,
         keyboardUIConfig = keyboardUIConfig == null
@@ -145,7 +147,7 @@ class _PasscodeScreenState extends State<PasscodeScreen>
             SizedBox(height: 15.0),
             widget.title,
             SizedBox(height: widget.showTheTextError != null ? 10.0 : 0.0),
-            (enteredPasscode.length <= 0 && widget.showTheTextError != null)
+            (enteredPasscode.length <= 0 && widget.showTheTextError != null&& widget.isHideWidgetError!=true)
                 ? widget.showTheTextError
                 : Container(),
             Container(
